@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신철의 블로그</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+        ul.recommend li{
+            color: darkgreen;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        ul.recommend li:hover {
+            color: orange;
+            cursor:pointer;
+        }
+    </style>
+    <header>
+        <h1 style="color: aquamarine; text-align: center; font-size: 36px;">신철의 블로그</h1>
+    </header>
+    <main>
+        
+        <article>
+            <h2>프론트엔드의 시작부터 취업까지</h2>
+            <p>취업 뽀개기 뿌셔뿌셔</p>
+        </article>
+        <aside>
+            <h1>추천 글 목록</h1>
+
+            
+            <ul class="recommend">
+                <li><a href="#">작성한 글 목록1</a> </li>
+                <li><a href="#">작성한 글 목록2</a> </li>
+                <li>li태그로 작성한 글목록3</li>
+            </ul>
+        </aside>
+        <form action="submit" method="post">
+            <label for="comment">댓글 입력창</label>
+            <input type="text" id="comment" name="comment">
+            <button>댓글 달기</button>
+        </form>
+        <footer>
+            <p>@ 2025 신철의 블로그. All rights reserved.</p>
+        </footer>
+    </main>
+</body>
+</html>
