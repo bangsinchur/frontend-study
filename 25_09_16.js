@@ -199,7 +199,6 @@
 //     console.log("두번째상품:", product2);
 //   });
 
-
 // console.log("Promise.all로 처리 시작...11");
 // Promise.all([getProduct1(), getProduct2()])
 //   .then(([product1, product2]) => {
@@ -211,28 +210,25 @@
 //     console.log("에러발생:", error.message);
 //   });
 
-
 // 상품 데이터
 const products = {
   1: { name: "노트북", price: 1200000 },
-  2: { name: "스마트폰", price: 800000 }
+  2: { name: "스마트폰", price: 800000 },
 };
 
 // 리뷰 데이터
 const reviews = {
   1: [
     { user: "김철수", rating: 5, comment: "아주 좋아요!" },
-    { user: "이영희", rating: 4, comment: "배송이 빨라요" }
+    { user: "이영희", rating: 4, comment: "배송이 빨라요" },
   ],
-  2: [
-    { user: "박지성", rating: 5, comment: "만족합니다" }
-  ]
+  2: [{ user: "박지성", rating: 5, comment: "만족합니다" }],
 };
 
 // 재고 데이터
 const stock = {
   1: 5,
-  2: 3
+  2: 3,
 };
 
 // 1. 상품 정보 가져오기
@@ -276,3 +272,54 @@ function getStockInfo(productId) {
     }, 800);
   });
 }
+
+// Promise.all([getProductInfo(1),getProductReviews(1),getStockInfo(1)])
+// .then(([productInFo,productReviews,stockInfo])=>{
+//   console.log("상품정보:",productInFo)
+//   console.log("상품리뷰:",productReviews)
+//   console.log("상품수량:",stockInfo)
+// }).catch((error)=>{
+//   console.log("에러발생:",error)
+// })
+
+//재사용하기 좋은 함수로 가공
+function getAllProductDetails(productId) {
+  return Promise.all([
+    getProductInfo(productId),
+    getProductReviews(productId),
+    getStockInfo(productId),
+  ]).then(([productInfo, productReviews, stockInfo]) => {
+    return {
+      productInfo,
+      productReviews,
+      stockInfo,
+    };
+  }).catch((error)=>{
+    throw new Error('상품정보조회 실패:',error.message);
+  })
+}
+
+
+getAllProductDetails(1).then(result=>{
+  console.log("모든상품 정보:", result);
+}).catch(error=>{
+  console.log("에러:",error.message)
+})
+
+// 함수 안에서 console.log까지 처리
+function showAllProductDetails(productId) {
+  return Promise.all([
+    getProductInfo(productId),
+    getProductReviews(productId),
+    getStockInfo(productId),
+  ]).then(([productInfo, productReviews, stockInfo]) => {
+    console.log("상품정보:", productInfo);
+    console.log("상품리뷰:", productReviews);
+    console.log("상품수량:", stockInfo);
+  }).catch((error)=>{
+    console.log("에러발생:", error);
+  })
+}
+
+// 이제 그냥 함수만 호출하면 됨
+showAllProductDetails(1);
