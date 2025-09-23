@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axios 실습</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>Axios 실습</h1>
+
+    <script>
+      async function sendPostRequest() {
+        try {
+          const response = await axios.post(
+            "https://jsonplaceholder.typicode.com/posts",
+            {
+              title: "안녕하세요",
+              body: "첫 번째 axios 요청입니다.",
+              userId: 1,
+            }
+          );
+          console.log("서버 응답:", response.data);
+        } catch (error) {
+          console.error("에러:", error);
+        }
+      }
+      sendPostRequest();
+    </script>
+  </body>
+</html>
