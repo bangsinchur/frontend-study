@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>intercepter 실습</title>
+  </head>
+  <body>
+    <h1>Axios 인터셉터 실습</h1>
+    <!-- 로딩 표시 영역 -->
+    <div id="loading" style="display: none">로딩 중...</div>
+    <!-- 에러 메시지 영역 -->
+    <div id="error" style="display: none; color: red"></div>
+    <!-- 결과 표시 영역 -->
+    <div id="result"></div>
+
+    <script>
+      // 로딩과 에러 상태를 제어하는 함수들
+      function showLoading() {
+        document.getElementById("loading").style.display = "block";
+      }
+
+      function hideLoading() {
+        document.getElementById("loading").style.display = "none";
+      }
+
+      function showError(message) {
+        const errorDiv = document.getElementById("error");
+        errorDiv.style.display = "block";
+        errorDiv.textContent = message;
+      }
+
+      function hideError() {
+        document.getElementById("error").style.display = "none";
+      }
+
+      // API 클라이언트 설정
+      const apiClient = axios.create({
+        baseURL: "https://jsonplaceholder.typicode.com",
+        timeout: 5000,
+      });
+
+      apiClient.interceptors.request.use(
+        function (config) {
+          showLoading();
+          config.headers.Autorization = "로그인_토큰_123";
+          return config;
+        },
+        function (error) {
+          // 응답에 에러가 있을 때 할 일
+          hideLoading(); // 로딩 표시 숨기기
+
+          // 에러 종류에 따라 다른 메시지 표시
+          if (error.response) {
+            if (error.response.status === 401) {
+              showError("로그인이 필요합니다.");
+            } else if (error.response.status === 404) {
+              showError("요청한 데이터를 찾을 수 없습니다.");
+            } else {
+              showError("서버 에러가 발생했습니다.");
+            }
+          } else if (error.request) {
+            showError("서버에서 응답이 오지 않습니다.");
+          } else {
+            showError("요청 설정 중 문제가 발생했습니다.");
+          }
+
+          return Promise.reject(error);
+        }
+      );
+    </script>
+  </body>
+</html>

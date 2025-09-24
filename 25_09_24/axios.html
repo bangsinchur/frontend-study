@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axios 기본 설정 실습</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>Axios 기본 설정 실습</h1>
+    <div id="result"></div>
+
+    <script>
+      const apiClient = axios.create({
+        baseURL: "https://jsonplaceholder.typicode.com",
+        timeout: 5000,
+      });
+
+      function displayResult(
+        message = "현재 적용 안되고있음,비상비상 쵸비상!!!"
+      ) {
+        const resultArea = document.getElementById("result");
+        resultArea.innerHTML += `<p>${message}</p>`;
+      }
+
+      async function fetchData() {
+        try {
+          const response = await apiClient.get("/posts");
+          const title = response.data.map((el, index) => {
+            return `<br> ${index + 1}. ` + el.title + ` userId : ${el.userId}`;
+          });
+          displayResult(title);
+        } catch (error) {
+          displayResult("Error! " + error.message);
+        }
+      }
+
+      // addEventListener를 fetchData 함수 밖으로 이동
+      window.addEventListener("load", fetchData);
+    </script>
+  </body>
+</html>
