@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axios 요청 취소 학습</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>Axios 요청 취소 실습</h1>
+    <div>
+      <input type="text" id="searchInput" placeholder="검색어를 입력하세요" />
+      <button onclick="cancelRequest()">요청 취소</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+      // CancelToken 생성을 위한 source를 저장할 변수
+      let cancelTokenSource = null;
+
+      // 검색 입력 시 이벤트 처리
+      const searchInput = document.getElementById("searchInput");
+      searchInput.addEventListener("input", handleSearch);
+
+      // 검색 처리 함수
+      async function handleSearch(e) {
+        const searchTerm = e.target.value;
+
+        try {
+          // 이전 요청이 있다면 취소
+          if (cancelTokenSource) {
+            cancelTokenSource.cancel("이전 요청이 취소됨");
+          }
+
+          // 새로운 CancelToken 생성
+          cancelTokenSource = axios.CancelToken.source();
+
+          // 요청 보내기 (예시로 JSONPlaceholder API 사용)
+          const response = await axios.get(
+            `https://jsonplaceholder.typicode.com/posts?q=${searchTerm}`,
+            {
+              cancelToken: cancelTokenSource.token,
+            }
+          );
+
+          // 결과 표시
+          document.getElementById("result").innerHTML = response.data
+            .map((post) => `<p>${post.title}</p>`)
+            .join("");
+        } catch (error) {
+          if (axios.isCancel(error)) {
+            console.log("요청이 취소됨:", error.message);
+          } else {
+            console.error("에러 발생:", error);
+            document.getElementById("result").innerHTML =
+              "에러가 발생했습니다.";
+          }
+        }
+      }
+
+      // 수동으로 요청을 취소하는 함수
+      function cancelRequest() {
+        if (cancelTokenSource) {
+          cancelTokenSource.cancel("사용자가 수동으로 요청을 취소함");
+          document.getElementById("result").innerHTML =
+            "요청이 취소되었습니다.";
+        }
+      }
+    </script>
+  </body>
+</html>
