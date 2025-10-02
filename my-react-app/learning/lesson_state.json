@@ -1,0 +1,92 @@
+{
+  "meta": { "version": 1, "last_updated": "2025-09-30" },
+  "learner_profile": {
+    "goal": "React/Next.js 취업",
+    "level": "입문",
+    "language": "ko"
+  },
+  "teaching_rules": {
+    "explain_before_code": true,
+    "guided_then_independent": true,
+    "independent_hints_only": 2,
+    "line_comments_in_examples": true,
+    "keep_curriculum_flow": true,
+    "end_with_recap": true
+  },
+  "progress": {
+    "covered_topics": [
+      "JS 변수/값/타입",
+      "JS 연산자/조건문/반복문",
+      "JS 함수/스코프/클로저",
+      "JS 배열 메서드(map/filter/reduce/some/every)",
+      "JS 객체/비구조화/스프레드",
+      "JS 오류 처리(try/catch/throw)",
+      "JS 비동기(Promise/async-await/Promise.all)",
+      "DOM 기초/이벤트",
+      "네트워크(fetch/axios, 인터셉터)",
+      "모듈 시스템(import/export)",
+      "JSX 자동 임포트 vs import React",
+      "StrictMode와 개발 모드 중복 렌더링",
+      "React 18 createRoot, 동시성 렌더링",
+      "동시성 vs 비동기",
+      "package.json vs package-lock.json",
+      "node_modules 역할",
+      "SemVer와 범위(^, ~, 정확, *)",
+      "npm install/update/ci, outdated/audit",
+      "락파일 재생성/동기화",
+      "의존성 분류",
+      "VS Code 사이드바 팁"
+    ],
+    "progress_percent": 10,
+    "last_date": "2025-09-30",
+    "last_summary": "JS 기초/심화와 React/Vite 환경·의존성 개요 정리 완료"
+  },
+  "remaining_curriculum": {
+    "stage1_react_basics": [
+      "컴포넌트/JSX",
+      "props",
+      "state",
+      "이벤트",
+      "조건부",
+      "리스트+key"
+    ],
+    "stage2_react_advanced": ["훅", "컨텍스트", "폼", "비동기 데이터"],
+    "stage3_structure_state": [
+      "폴더링",
+      "Redux/Zustand",
+      "API 레이어",
+      "에러/로딩 UX"
+    ],
+    "stage4_nextjs": ["라우팅", "데이터 페칭", "SEO/이미지", "정적/동적"],
+    "stage5_quality_deploy": ["ESLint/Prettier", "테스트", "CI/CD", "Vercel"],
+    "stage6_portfolio": ["요구사항→구현→리뷰→리팩터링→문서화"]
+  },
+  "next_lesson_plan": {
+    "topic": "React 컴포넌트와 JSX",
+    "objective": "용어 정의와 기본 규칙 이해",
+    "guided_practice": "버튼 컴포넌트(클릭 카운터 예고만)",
+    "independent_practice": "카드 컴포넌트(힌트 2개)"
+  },
+  "recent_log_summary": [
+    {
+      "date": "2025-09-30",
+      "learned": [
+        "JSX 자동 임포트/StrictMode/createRoot/동시성 개념, SemVer와 의존성 관리"
+      ],
+      "next": "React 컴포넌트/JSX → 버튼 가이드 → 카드 독학"
+    },
+    {
+      "date": "2025-09-29",
+      "learned": ["Vite 구조, index.html/엔트리, 메타도구 및 버전 관리 기본"],
+      "next": "환경 정리 마무리 후 React 기초 개념"
+    }
+  ],
+  "session_protocol": [
+    "어제 요약",
+    "오늘 목표",
+    "개념 설명",
+    "가이드 실습",
+    "독학 문제(정답 보류)",
+    "복습/다음 예고"
+  ]
+}
