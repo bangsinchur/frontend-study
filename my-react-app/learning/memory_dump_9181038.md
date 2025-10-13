@@ -40,7 +40,6 @@
   - 네트워크: fetch/axios 기본, 인터셉터
   - 모듈 시스템: import/export
 - React/Vite/도구:
-
   - JSX 자동 임포트 vs import React
   - StrictMode 목적/개발 모드 중복 렌더링
   - React 18 createRoot, 동시성 렌더링 개념
@@ -52,10 +51,18 @@
   - 락파일 재생성/동기화 주의사항
   - 의존성 분류(dependencies/dev/peer/optional/bundled)
   - VS Code 사이드바 팁
+- React 기초:
 
-- 진행률(대략): 10%
-- last_date: 2025-09-30
-- last_summary: JS 기초/심화와 React/Vite 환경·의존성 개요 정리 완료
+  - React 컴포넌트와 JSX 개념
+  - Props(속성) 전달 방법
+  - 콜백함수 개념과 동작 원리
+  - 렌더링과 State 업데이트 관계
+  - setCount(count + 1) vs setCount(prev => prev + 1) 차이
+  - React 배치 업데이트(16ms) 개념
+
+- 진행률(대략): 15%
+- last_date: 2025-10-02
+- last_summary: React 컴포넌트/JSX와 Props 개념 완료, 콜백함수 동작 원리 이해
 
 #### Remaining Curriculum
 
@@ -68,10 +75,10 @@
 
 #### Next Lesson Plan
 
-- Topic: React 컴포넌트와 JSX 개념
-- Objective: 용어 정의, 구성 요소 인지, 기본 규칙 이해
-- Guided Practice: 버튼 컴포넌트 만들기(클릭 카운터는 예고만)
-- Independent Practice: 카드 컴포넌트(힌트 2개 제공)
+- Topic: State(상태)와 useState 훅
+- Objective: 변경 가능한 데이터와 State 관리 이해
+- Guided Practice: useState를 사용한 카운터 만들기
+- Independent Practice: useState를 사용한 입력 폼 만들기(힌트 2개)
 
 #### Session Protocol
 
@@ -88,3 +95,14 @@
 
 - 로그가 길어지면 lesson_state.json의 recent_log_summary만 빠르게 읽고 시작
 - 오래된 상세 로그는 learning/archive/lesson_log_YYYY-MM.md로 이동
+
+#### Today's Session Summary (2025-10-02)
+
+- 배운 내용: React 컴포넌트/JSX 개념, Props 전달, 콜백함수 동작 원리
+- 핵심 질문과 답변:
+  - 콜백함수는 부모와 연결되어 있고 조건이 달려있는 함수
+  - 렌더링 후 실행 = 사용자 액션 후 실행 (같은 개념)
+  - setCount(count + 1) vs setCount(prev => prev + 1) 차이점
+  - React 배치 업데이트(16ms) 개념과 빠른 연속 실행 문제
+- 실습: Props를 사용한 카드/버튼 컴포넌트
+- 다음 계획: State(상태)와 useState 훅 학습

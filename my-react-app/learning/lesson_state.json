@@ -1,5 +1,5 @@
 {
-  "meta": { "version": 1, "last_updated": "2025-09-30" },
+  "meta": { "version": 1, "last_updated": "2025-10-02" },
   "learner_profile": {
     "goal": "React/Next.js 취업",
     "level": "입문",
@@ -35,11 +35,14 @@
       "npm install/update/ci, outdated/audit",
       "락파일 재생성/동기화",
       "의존성 분류",
-      "VS Code 사이드바 팁"
+      "VS Code 사이드바 팁",
+      "React 컴포넌트와 JSX",
+      "Props(속성) 전달",
+      "콜백함수 개념과 동작 원리"
     ],
-    "progress_percent": 10,
-    "last_date": "2025-09-30",
-    "last_summary": "JS 기초/심화와 React/Vite 환경·의존성 개요 정리 완료"
+    "progress_percent": 15,
+    "last_date": "2025-10-02",
+    "last_summary": "React 컴포넌트/JSX와 Props 개념 완료, 콜백함수 동작 원리 이해"
   },
   "remaining_curriculum": {
     "stage1_react_basics": [
@@ -62,12 +65,17 @@
     "stage6_portfolio": ["요구사항→구현→리뷰→리팩터링→문서화"]
   },
   "next_lesson_plan": {
-    "topic": "React 컴포넌트와 JSX",
-    "objective": "용어 정의와 기본 규칙 이해",
-    "guided_practice": "버튼 컴포넌트(클릭 카운터 예고만)",
-    "independent_practice": "카드 컴포넌트(힌트 2개)"
+    "topic": "State(상태)와 useState 훅",
+    "objective": "변경 가능한 데이터와 State 관리 이해",
+    "guided_practice": "useState를 사용한 카운터 만들기",
+    "independent_practice": "useState를 사용한 입력 폼 만들기(힌트 2개)"
   },
   "recent_log_summary": [
+    {
+      "date": "2025-10-02",
+      "learned": ["React 컴포넌트/JSX 개념, Props 전달, 콜백함수 동작 원리"],
+      "next": "State(상태) 개념 → useState 훅 → 카운터 가이드 → 입력 폼 독학"
+    },
     {
       "date": "2025-09-30",
       "learned": [
