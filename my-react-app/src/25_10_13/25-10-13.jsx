@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "./UiTable";
+import Button from "../25_10_14/Button";
 
 const tableData = [
   {
@@ -8,7 +10,6 @@ const tableData = [
       name: "커피 원두",
       role: "별다방 원두",
     },
-    projectName: "원두 수량 버튼",
     team: {
       images: [
         "/images/user/user-22.jpg",
@@ -26,7 +27,7 @@ const tableData = [
       name: "라즈베리 시럽",
       role: "라즈베리 에이드",
     },
-    projectName: "라즈베리 버튼",
+
     team: {
       images: ["/images/user/user-25.jpg", "/images/user/user-26.jpg"],
     },
@@ -40,7 +41,7 @@ const tableData = [
       name: "곡물 파우더",
       role: "곡물 라떼 전용",
     },
-    projectName: "곡물 파우더 버튼",
+
     team: {
       images: ["/images/user/user-27.jpg"],
     },
@@ -54,7 +55,7 @@ const tableData = [
       name: "초코&딸기 시럽",
       role: "시럽 세트",
     },
-    projectName: "시럽 수량 버튼",
+
     team: {
       images: [
         "/images/user/user-28.jpg",
@@ -72,7 +73,6 @@ const tableData = [
       name: "카페 시럽",
       role: "슈가 시럽",
     },
-    projectName: "시럽 수량 버튼",
     team: {
       images: [
         "/images/user/user-31.jpg",
@@ -86,6 +86,24 @@ const tableData = [
 ];
 
 export default function Practice() {
+  const [sellQuantity, setSellQuantity] = useState({});
+
+  const handleIncrease = (id) => {
+    setSellQuantity((prev) => ({
+      ...prev,
+      [id]: (prev[id] || 0) + 1,
+    }));
+  };
+  const handleDecrease = (id) => {
+    setSellQuantity((prev) => {
+      if (prev[id] > 0) {
+        return { ...prev, [id]: prev[id] - 1 };
+      } else {
+        alert("수량이 0 보다 작을 수 없습니다.");
+        return prev;
+      }
+    });
+  };
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
       <div className="max-w-full overflow-x-auto">
@@ -151,7 +169,11 @@ export default function Practice() {
                   </div>
                 </TableCell>
                 <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                  {order.projectName}
+                  <Button
+                    increase={() => handleIncrease(order.id)}
+                    sellQuantity={sellQuantity[order.id] || 0}
+                    decrease={() => handleDecrease(order.id)}
+                  />
                 </TableCell>
                 <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                   <div className="flex -space-x-2">
