@@ -2,7 +2,21 @@ import { useState } from "react";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "./UiTable";
 import Button from "../25_10_14/Button";
 
-const tableData = [
+interface Order {
+  id: number;
+  user: {
+    image: string;
+    name: string;
+    role: string;
+  };
+  team: {
+    images: string[];
+  };
+  budget: string;
+  totalQuantity: string;
+}
+
+const tableData:Order[] = [
   {
     id: 1,
     user: {
@@ -85,16 +99,20 @@ const tableData = [
   },
 ];
 
-export default function Practice() {
-  const [sellQuantity, setSellQuantity] = useState({});
+type CounterMap ={
+  [key: string]: number;
+}
 
-  const handleIncrease = (id) => {
+export default function Practice() {
+  const [sellQuantity, setSellQuantity] = useState<Record<string,number>>({});
+
+  const handleIncrease = (id:number) => {
     setSellQuantity((prev) => ({
       ...prev,
       [id]: (prev[id] || 0) + 1,
     }));
   };
-  const handleDecrease = (id) => {
+  const handleDecrease = (id:number) => {
     setSellQuantity((prev) => {
       if (prev[id] > 0) {
         return { ...prev, [id]: prev[id] - 1 };
